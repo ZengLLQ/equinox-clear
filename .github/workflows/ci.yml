@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Move Bytecode Compilation & Invariant Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Aptos CLI
+        run: |
+          curl -fsSL -o aptos-cli.zip https://github.com/aptos-labs/aptos-core/releases/download/aptos-cli-v6.0.1/aptos-cli-6.0.1-Ubuntu-22.04-x86_64.zip
+          sudo unzip -q aptos-cli.zip -d /usr/local/bin
+          sudo chmod +x /usr/local/bin/aptos
+          aptos --version
+
+      - name: Compile Move Package
+        run: aptos move compile --dev
+
+      - name: Run Move Unit & Invariant Tests
+        run: aptos move test

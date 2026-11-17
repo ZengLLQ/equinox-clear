@@ -1,0 +1,14 @@
+[package]
+name = "equinox_clear"
+version = "0.1.0"
+authors = ["ZengLLQ"]
+
+[addresses]
+equinox_clear = "0xEC10"
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "aptos-release-v1.16"
+subdir = "aptos-framework"
+
+[dev-dependencies]

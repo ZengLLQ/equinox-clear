@@ -1,0 +1,7 @@
+build/
+.aptos/
+*.mv
+*.coverage
+coverage.lcov
+.DS_Store
+Thumbs.db
